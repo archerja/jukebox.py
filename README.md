@@ -19,12 +19,12 @@ Usage: jukebox.py [your dir] [classic or modern]
 
 **Classic Style**
 
-![classic](archerja.github.com/jukebox.py/images/classic.png)
+![classic](/images/classic.png)
 
 
 **Modern Style**
 
-![modern](archerja.github.com/jukebox.py/images/modern.png)
+![modern](/images/modern.png)
 
 
 
