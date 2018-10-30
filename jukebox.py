@@ -8,13 +8,15 @@ import sys
 from mutagen.mp3 import MP3
 
 USE_EXT = ('mp3')
+style = ''
+path = ''
 numcols = 4
 
 jclassic = os.path.join(os.getcwd(),'Jukebox_classic.html')
 jmodern = os.path.join(os.getcwd(),'Jukebox_modern.html')
 jvarious = os.path.join(os.getcwd(),'Jukebox_various.html')
 
-version = '0.0.1'
+version = '0.0.2'
 
 class ID3:
     def __init__(self,path):
@@ -58,6 +60,7 @@ def build(path):
                             titleslist.append((id3.artist,id3.title,id3.track,id3.album,id3.genre,id3.bitrate,id3.year,id3.comment,id3.duration,root,path,location))
 		        elif style == 'modern':
                             titleslist.append((id3.artist,id3.year,id3.album,id3.comment,id3.track,id3.title,id3.genre,id3.bitrate,id3.duration,root,path,location))
+			# various
 		        else:
                             titleslist.append((id3.album,id3.comment,id3.track,id3.artist,id3.title,id3.genre,id3.bitrate,id3.duration,root,path,location))
 	print ""
@@ -230,13 +233,38 @@ def makepage(path,style):
     f.write('</html>\n')
     f.close()
 
+def help():
+    print ''
+    print sys.argv[0], ', version ', version
+    print ''
+    print 'Usage: ', sys.argv[0], ' [PATH] [TYPE] [OPTION]'
+    print ''
+    print '                    PATH     [path to your mp3 folder]'
+    print ''
+    print '                    TYPE     [classic|modern|various]'
+    print '                                (choose 1 of 3 styles)'
+    print ''
+    print '                    OPTION   [number of columns]'
+    print '                                (optional: defaults to 4)'
+    print ''
+    exit
 
 if __name__ == '__main__':
 
-    if len(sys.argv) < 3:
-       print 'Usage: jukebox.py [your dir] [classic or modern]'
+    if len(sys.argv) < 2:
+       print 'Usage: jukebox.py [PATH] [TYPE] [OPTION]'
+       print "Try 'jukebox.py --help' for more information."
     else:
-       path = sys.argv[1]
-       style = sys.argv[2]
-       print "directory to scan is: ", path
-       makepage(path,style)
+       if sys.argv[1:]:
+          path = sys.argv[1]
+       if sys.argv[2:]:
+          style = sys.argv[2]
+       if sys.argv[3:]:
+          numcols = int(sys.argv[3])
+       if path == '--help':
+          help()
+       else:	  	  
+          print "directory to scan is: ", path
+          makepage(path,style)
+
+
