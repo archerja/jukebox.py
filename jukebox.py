@@ -16,7 +16,7 @@ jclassic = os.path.join(os.getcwd(),'Jukebox_classic.html')
 jmodern = os.path.join(os.getcwd(),'Jukebox_modern.html')
 jvarious = os.path.join(os.getcwd(),'Jukebox_various.html')
 
-version = '0.0.2'
+version = '0.0.3'
 
 class ID3:
     def __init__(self,path):
@@ -76,7 +76,7 @@ def build(path):
 
 
 def makeVarious(path):
-    pagedate = ''
+    pagedata = ''
     thelist = build(path)
     pagedata = '<table border=1 >\n'
     i = thelist
@@ -102,14 +102,7 @@ def makeVarious(path):
             pagedata = pagedata + '<hr>\n'
             img = i[prev][8] + '/folder.jpg'
             pagedata = pagedata + '<img src="' + img + '" width = "300"></br>\n'
-#            if i[prev][1] == i[next][1]:
-#              pagedata = pagedata + i[now][3] + '</br>\n'
-#	      curcom = i[now][3]
             while i[prev][1] == i[next][1]:			# while albums match
-#              if curcom != i[next][3]:
-#                pagedata = pagedata + i[now][3] + '</br>\n'
-#                curcom = i[next][3]
-#              pagedata = pagedata + '<a href="' + i[now][9] + '" target="_blank">' + '(' + i[now][2] + ') ' + i[now][3] + ' - ' + i[now][4] + '</a></br>\n'
               pagedata = pagedata + '(' + i[now][2] + ') ' + i[now][3] + ' - ' + '</br><a href="' + i[now][9] + '" target="_blank">'  + i[now][4] + '</a></br>\n'
               now = now + 1
               next = next + 1
@@ -125,7 +118,7 @@ def makeVarious(path):
 
 
 def makeModern(path):
-    pagedate = ''
+    pagedata = ''
     thelist = build(path)
     pagedata = '<table border=1 >\n'
     i = thelist
@@ -173,7 +166,7 @@ def makeModern(path):
 
 
 def makeClassic(path):
-    pagedate = ''
+    pagedata = ''
     thelist = build(path)
     n = 0
     i = thelist
@@ -228,7 +221,7 @@ def makepage(path,style):
     f.write('<h1>Jukebox</h1>\n')
 #    print pagetable
     f.write(pagetable)
-    f.write('<font size="-1">version ' + version +'. &copy; 2018 by <b>ME</b>. <A HREF="https://github.com/archerja" target="_blank">Jukebox on github</A></font>\n')
+    f.write('<font size="-1">version ' + version +' &copy; 2018. <A HREF="https://github.com/archerja/jukebox.py" target="_blank">Jukebox on github</A></font>\n')
     f.write('</body>\n')
     f.write('</html>\n')
     f.close()
@@ -243,6 +236,9 @@ def help():
     print ''
     print '                    TYPE     [classic|modern|various]'
     print '                                (choose 1 of 3 styles)'
+    print '                                classic = original jukebox, good for multiple artists'
+    print '                                modern  = CD jukebox, good for single artist'
+    print '                                various = CD jukebox, good for multiple artists'
     print ''
     print '                    OPTION   [number of columns]'
     print '                                (optional: defaults to 4)'

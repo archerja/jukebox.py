@@ -35,7 +35,7 @@ Try 'jukebox.py --help' for more information.
 ```
 $ ./jukebox.py --help
 
-./jukebox.py , version  0.0.2
+./jukebox.py , version  0.0.3
 
 Usage:  ./jukebox.py  [PATH] [TYPE] [OPTION]
 
@@ -55,6 +55,8 @@ $ ./jukebox.py /media/music/artists/ classic
 
 ## Release History
 
+* 0.0.3
+    * Bugs (spelling mistakes)
 * 0.0.2
     * The first proper release
     * Added various artist type
