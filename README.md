@@ -7,15 +7,17 @@ You can play the local music using the browser. It will open a new tab, and play
 
 Modern and Various styles will look for a "folder.jpg" album cover in the same directory as the mp3.
 
+The number of columns will default to 4. This can be changed on the command line.
+
 
 **Classic Style**
 
-![classic](/images/classic.png)
+![classic](images/classic.png)
 
 
 **Modern/Various Style**
 
-![modern](/images/modern.png)
+![modern](images/modern.png)
 
 
 ## Installation
@@ -35,7 +37,7 @@ Try 'jukebox.py --help' for more information.
 ```
 $ ./jukebox.py --help
 
-./jukebox.py , version  0.0.3
+./jukebox.py , version  0.0.4
 
 Usage:  ./jukebox.py  [PATH] [TYPE] [OPTION]
 
@@ -43,6 +45,9 @@ Usage:  ./jukebox.py  [PATH] [TYPE] [OPTION]
 
                     TYPE     [classic|modern|various]
                                 (choose 1 of 3 styles)
+                                classic = original jukebox, good for multiple artists
+                                modern  = CD jukebox, good for single artist
+                                various = CD jukebox, good for multiple artists                                
 
                     OPTION   [number of columns]
                                 (optional: defaults to 4)
@@ -55,6 +60,8 @@ $ ./jukebox.py /media/music/artists/ classic
 
 ## Release History
 
+* 0.0.4
+    * Code cleanup (for python3)
 * 0.0.3
     * Bugs (spelling mistakes)
 * 0.0.2
